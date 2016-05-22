@@ -12,6 +12,7 @@ $(document).ready(function(){
     ctx.fillRect(this.x,this.y,this.width,this.height);
     ctx.fillStyle = "red";
   }
+  paddle.move
 
   var ball = new Ball()
   ball.draw = function(){
