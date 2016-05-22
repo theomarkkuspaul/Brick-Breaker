@@ -44,30 +44,54 @@ $(document).ready(function(){
         ball.velocityY = -ball.velocityY;
       };
     }
-
   }
 
 
+var refreshRate = 10, leftKeyDown = false, rightKeyDown = false
 
   $(document).keydown(function(event){
 
-    if(event.which == 37){ // move paddle left
-      if(paddle.leftPaddleBoundary()){
-        return paddle.x -= 10;
-      } else {
-        console.log('Reached left boundary')
-      }
+    if(event.which == 37){
+      leftKeyDown = true
     };
-    if(event.which == 39){ // move paddle right
-      if(paddle.rightPaddleBoundary()){ //if paddle has reached the edge of the game screen, allow no further movement
-        paddle.x += 10;
-      } else {
-        console.log('Reached right boundary')
-      }
+    if(event.which == 39){
+      rightKeyDown = true
     };
   });
 
-  raf = window.requestAnimationFrame(move);
+  $(document).keyup(function(event){
 
+    if(event.which == 37){
+      leftKeyDown = false
+    };
+    if(event.which == 39){
+      rightKeyDown = false
+    };
+  });
+
+  var tick = function(){
+
+    if(leftKeyDown){
+      if(paddle.leftPaddleBoundary()){
+        paddle.x -= 5;
+        console.log(paddle.x);
+      } else {
+        console.log('Reached left boundary')
+      }
+    } else if(rightKeyDown){
+      if(paddle.rightPaddleBoundary()){
+        paddle.x += 5;
+        console.log(paddle.x);
+      } else {
+        console.log('Reached right boundary') //if paddle has reached the edge of the game screen, allow no further movement
+      }
+    }
+
+    setTimeout(tick, refreshRate);
+  }
+
+  tick();
+
+  raf = window.requestAnimationFrame(move);
 
 });
