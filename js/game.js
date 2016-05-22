@@ -6,10 +6,10 @@ $(document).ready(function(){
   var raf;
 
   var ball = {
-    x : 100,
+    x : 0,
     y : 100,
-    velocityX : 10,
-    velocityY : 9,
+    velocityX : 5,
+    velocityY : 2,
     radius : 3 ,
     color : 'green',
     draw : function(){
@@ -21,9 +21,21 @@ $(document).ready(function(){
     }
   };
 
+  var paddle = {
+    height : 20,
+    width : 100,
+    x : (canvas.width) / 2,
+    y : canvas.height - 30,
+    draw : function(){
+      ctx.fillRect(this.x,this.y,this.width,this.height);
+      ctx.fillStyle = "red";
+    }
+  }
+
   var move = function(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ball.draw()
+    paddle.draw()
     ball.x += ball.velocityX;
     ball.y += ball.velocityY;
     raf = window.requestAnimationFrame(move);
@@ -36,17 +48,16 @@ $(document).ready(function(){
     }
   }
 
-  $('#canvas').on('mouseover', function(event){
-    console.log('enter');
-    raf = window.requestAnimationFrame(move);
-  });
+  raf = window.requestAnimationFrame(move);
 
-  $('#canvas').on('mouseout', function(event){
-    console.log('exit');
-    window.cancelAnimationFrame(raf);
-  });
+  // $('#canvas').on('mouseover', function(event){
+  //   console.log('enter');
+  //   // raf = window.requestAnimationFrame(move);
+  // });
 
-  ball.draw();
-
+  // $('#canvas').on('mouseout', function(event){
+  //   console.log('exit');
+  //   window.cancelAnimationFrame(raf);
+  // });
 
 });
