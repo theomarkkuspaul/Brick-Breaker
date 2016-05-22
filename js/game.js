@@ -45,11 +45,13 @@ $(document).ready(function(){
 
     if(event.which == 37){
       paddle.x -= 10;
-      console.log('left');
+      console.log(paddle.center());
+      // console.log(canvas.width/2);
     }
     if(event.which == 39){
       paddle.x += 10;
-      console.log('right');
+      console.log(paddle.center());
+      // console.log(canvas.width/2);
     }
   });
 
