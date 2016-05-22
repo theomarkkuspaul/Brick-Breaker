@@ -8,14 +8,13 @@ $(document).ready(function(){
   var raf;
 
   var paddle = new Paddle()
-  paddle.draw =  function() {
+  paddle.drawPaddle = function() {
     ctx.fillRect(this.x,this.y,this.width,this.height);
     ctx.fillStyle = "red";
   }
-  paddle.move
 
   var ball = new Ball()
-  ball.draw = function(){
+  ball.drawBall = function(){
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, true);
     ctx.closePath();
@@ -26,8 +25,8 @@ $(document).ready(function(){
 
   var move = function(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ball.draw()
-    paddle.draw(ctx)
+    ball.drawBall()
+    paddle.drawPaddle()
     ball.x += ball.velocityX;
     ball.y += ball.velocityY;
     raf = window.requestAnimationFrame(move);
@@ -38,7 +37,21 @@ $(document).ready(function(){
     if (ball.x + ball.velocityX > canvas.width || ball.x + ball.velocityX < 0) {
       ball.velocityX = -ball.velocityX;
     }
+
+
   }
+
+  $(document).keydown(function(event){
+
+    if(event.which == 37){
+      paddle.x -= 10;
+      console.log('left');
+    }
+    if(event.which == 39){
+      paddle.x += 10;
+      console.log('right');
+    }
+  });
 
   raf = window.requestAnimationFrame(move);
 

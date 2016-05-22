@@ -1,5 +1,5 @@
 
-var Paddle = function(ctx){
+var Paddle = function(){
   this.height = 20,
   this.width = 100,
   this.colour = 'red',
