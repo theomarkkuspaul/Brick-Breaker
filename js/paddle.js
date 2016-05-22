@@ -9,3 +9,11 @@ var Paddle = function(){
     return (this.x + (this.x + this.width)) / 2
   }
 }
+
+
+Paddle.prototype.surfaceRange = function () {
+  var lower, upper;
+  lower = this.center() - (this.width / 2)
+  upper = this.center() + (this.width / 2)
+  return [lower, upper]
+};

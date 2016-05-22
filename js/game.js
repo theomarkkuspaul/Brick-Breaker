@@ -37,21 +37,25 @@ $(document).ready(function(){
     if (ball.x + ball.velocityX > canvas.width || ball.x + ball.velocityX < 0) {
       ball.velocityX = -ball.velocityX;
     }
-
+    // debugger;
+    if (ball.y > canvas.height - 30 ){
+      if (ball.x > paddle.surfaceRange()[0] && ball.x < paddle.surfaceRange()[1]){
+        console.log('hit');
+        ball.velocityY = -ball.velocityY;
+      };
+    }
 
   }
+
+
 
   $(document).keydown(function(event){
 
     if(event.which == 37){
       paddle.x -= 10;
-      console.log(paddle.center());
-      // console.log(canvas.width/2);
     }
     if(event.which == 39){
       paddle.x += 10;
-      console.log(paddle.center());
-      // console.log(canvas.width/2);
     }
   });
 
