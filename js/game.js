@@ -37,7 +37,7 @@ $(document).ready(function(){
     if (ball.x + ball.velocityX > canvas.width || ball.x + ball.velocityX < 0) {
       ball.velocityX = -ball.velocityX;
     }
-    // debugger;
+
     if (ball.y > canvas.height - 30 ){
       if (ball.x > paddle.surfaceRange()[0] && ball.x < paddle.surfaceRange()[1]){
         console.log('hit');
@@ -51,11 +51,20 @@ $(document).ready(function(){
 
   $(document).keydown(function(event){
 
-    if(event.which == 37){
-      paddle.x -= 10;
+    if(event.which == 37){ // move paddle left
+      if(paddle.leftPaddleBoudary()){
+        return paddle.x -= 10;
+      } else {
+        console.log('Reached left boundary')
+      }
+
     }
-    if(event.which == 39){
-      paddle.x += 10;
+    if(event.which == 39){ // move paddle right
+      if(paddle.rightPaddleBoudary()){ //if paddle has reached the edge of the game screen, allow no further movement
+        paddle.x += 10;
+      } else {
+        console.log('Reached right boundary')
+      }
     }
   });
 

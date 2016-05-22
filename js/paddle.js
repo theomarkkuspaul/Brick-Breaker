@@ -17,3 +17,17 @@ Paddle.prototype.surfaceRange = function () {
   upper = this.center() + (this.width / 2)
   return [lower, upper]
 };
+
+Paddle.prototype.leftPaddleBoudary = function() {
+  if(this.x == 0){
+    return false
+  }
+  return true
+};
+
+Paddle.prototype.rightPaddleBoudary = function() {
+  if(this.x == (canvas.width - this.width)){
+    return false
+  }
+  return true
+};
