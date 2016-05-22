@@ -31,12 +31,19 @@ $(document).ready(function(){
     ball.y += ball.velocityY;
     raf = window.requestAnimationFrame(move);
 
-    if (ball.y + ball.velocityY > canvas.height || ball.y + ball.velocityY < 0) {
+    // if (ball.y + ball.velocityY > canvas.height || ball.y + ball.velocityY < 0) {
+    //   ball.velocityY = -ball.velocityY;
+    // }
+    if ( ball.reachedBoundary(ball.y + ball.velocityY, canvas.height, '>') || ball.reachedBoundary(ball.y + ball.velocityY, 0, '<'))  {
       ball.velocityY = -ball.velocityY;
     }
-    if (ball.x + ball.velocityX > canvas.width || ball.x + ball.velocityX < 0) {
+    if( ball.reachedBoundary(ball.x + ball.velocityX, canvas.width, '>') || ball.reachedBoundary(ball.x + ball.velocityX, 0, '<')){
       ball.velocityX = -ball.velocityX;
     }
+    
+    // if (ball.x + ball.velocityX > canvas.width || ball.x + ball.velocityX < 0) {
+    //   ball.velocityX = -ball.velocityX;
+    // }
 
     if (ball.y > canvas.height - 30 ){
       if (ball.x > paddle.surfaceRange()[0] && ball.x < paddle.surfaceRange()[1]){

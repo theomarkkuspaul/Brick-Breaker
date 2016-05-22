@@ -7,3 +7,16 @@ var Ball = function(){
   this.radius = 3 ,
   this.color = 'green'
 }
+
+Ball.prototype.reachedBoundary = function (startPos, boundary, comparitor) {
+  if(comparitor == '>'){
+    if(startPos > boundary){
+      return true;
+    }
+  } else if (comparitor == '<') {
+    if(boundary > startPos){
+      return true;
+    }
+  }
+  return false;
+};
