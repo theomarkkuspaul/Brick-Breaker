@@ -70,14 +70,5 @@ $(document).ready(function(){
 
   raf = window.requestAnimationFrame(move);
 
-  // $('#canvas').on('mouseover', function(event){
-  //   console.log('enter');
-  //   // raf = window.requestAnimationFrame(move);
-  // });
-
-  // $('#canvas').on('mouseout', function(event){
-  //   console.log('exit');
-  //   window.cancelAnimationFrame(raf);
-  // });
 
 });
