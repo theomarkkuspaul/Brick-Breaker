@@ -18,14 +18,14 @@ Paddle.prototype.surfaceRange = function () {
   return [lower, upper]
 };
 
-Paddle.prototype.leftPaddleBoudary = function() {
+Paddle.prototype.leftPaddleBoundary = function() {
   if(this.x == 0){
     return false
   }
   return true
 };
 
-Paddle.prototype.rightPaddleBoudary = function() {
+Paddle.prototype.rightPaddleBoundary = function() {
   if(this.x == (canvas.width - this.width)){
     return false
   }

@@ -52,20 +52,19 @@ $(document).ready(function(){
   $(document).keydown(function(event){
 
     if(event.which == 37){ // move paddle left
-      if(paddle.leftPaddleBoudary()){
+      if(paddle.leftPaddleBoundary()){
         return paddle.x -= 10;
       } else {
         console.log('Reached left boundary')
       }
-
-    }
+    };
     if(event.which == 39){ // move paddle right
-      if(paddle.rightPaddleBoudary()){ //if paddle has reached the edge of the game screen, allow no further movement
+      if(paddle.rightPaddleBoundary()){ //if paddle has reached the edge of the game screen, allow no further movement
         paddle.x += 10;
       } else {
         console.log('Reached right boundary')
       }
-    }
+    };
   });
 
   raf = window.requestAnimationFrame(move);
