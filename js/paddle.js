@@ -32,6 +32,20 @@ Paddle.prototype.rightBoundary = function() {
   return true
 };
 
-Paddle.prototype.topEdge = function () {
+Paddle.prototype.topSide = function () {
   return this.y
+};
+
+Paddle.prototype.leftEdge = function () {
+  var leftCorner, leftMedium;
+  leftCorner = this.surfaceRange()[0];
+  leftMedium = leftCorner + 10;
+  return [leftCorner, leftMedium];
+};
+
+Paddle.prototype.rightEdge = function () {
+  var rightCorner, rightMedium;
+  rightCorner = this.surfaceRange()[1];
+  rightMedium = rightCorner + 10;
+  return [rightCorner, rightMedium];
 };

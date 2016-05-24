@@ -51,11 +51,12 @@ $(document).ready(function(){
     //   ball.velocityX = -ball.velocityX;
     // }
 
-    if (ball.bottomEdge() == paddle.topEdge() ){ // triggers if the y coor of the ball matches the top side of the paddle
-      if (ball.x > paddle.surfaceRange()[0] && ball.x < paddle.center()){
+    if (ball.bottomEdge() == paddle.topSide() ){ // triggers if the y coor of the ball matches the top side of the paddle
+      debugger;
+      if (ball.x.isBetween(paddle.surfaceRange()[0], paddle.center())){
 
         // console.log('hit');
-        if ( ball.velocityX < 0){
+        if ( ball.velocityX < 0 ){
           ball.velocityY = -ball.velocityY;
         } else {
           ball.velocityX = -ball.velocityX
@@ -120,3 +121,12 @@ var refreshRate = 10, leftKeyDown = false, rightKeyDown = false
   raf = window.requestAnimationFrame(move);
 
 });
+
+// this prototype function on the Number class takes two parameters: lower and upper. The function checks whether the number the function was called upon is between these two ranges; returns a boolean.
+
+Number.prototype.isBetween = function(lower, upper){
+  if ( this > lower && this < upper ) {
+    return true
+  }
+  false
+}
