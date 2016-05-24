@@ -30,7 +30,7 @@ $(document).ready(function(){
     ball.x += ball.velocityX;
     ball.y += ball.velocityY;
     raf = window.requestAnimationFrame(move);
-    console.log(ball.bottomEdge())
+
     // if (ball.y + ball.velocityY > canvas.height || ball.y + ball.velocityY < 0) {
     //   ball.velocityY = -ball.velocityY;
     // }
@@ -41,18 +41,26 @@ $(document).ready(function(){
       ball.velocityX = -ball.velocityX;
     }
 
+    endGame();
     // if (ball.x + ball.velocityX > canvas.width || ball.x + ball.velocityX < 0) {
     //   ball.velocityX = -ball.velocityX;
     // }
 
     if (ball.bottomEdge() == paddle.topEdge() ){
-      debugger;
       if (ball.x > paddle.surfaceRange()[0] && ball.x < paddle.surfaceRange()[1]){
-        console.log('hit');
+        // console.log('hit');
         ball.velocityY = -ball.velocityY;
       };
     }
   }
+
+
+var endGame = function(){
+  if ( ball.bottomEdge() == canvas.height){
+    alert('Game Over!')
+    ctx.globalCompositeOperation = "destination-out"; // makes all shapes disappear
+  }
+}
 
 
 var refreshRate = 10, leftKeyDown = false, rightKeyDown = false
@@ -80,16 +88,14 @@ var refreshRate = 10, leftKeyDown = false, rightKeyDown = false
   var tick = function(){
 
     if(leftKeyDown){
-      if(paddle.leftPaddleBoundary()){
+      if(paddle.leftBoundary()){
         paddle.x -= 5;
-        console.log(paddle.x);
       } else {
         console.log('Reached left boundary')
       }
     } else if(rightKeyDown){
-      if(paddle.rightPaddleBoundary()){
+      if(paddle.rightBoundary()){
         paddle.x += 5;
-        console.log(paddle.x);
       } else {
         console.log('Reached right boundary') //if paddle has reached the edge of the game screen, allow no further movement
       }

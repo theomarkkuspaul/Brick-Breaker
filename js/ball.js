@@ -2,12 +2,12 @@
 var Ball = function(){
   this.x = 0,
   this.y = 100,
-  this.velocityX = 2.5,
-  this.velocityY = 1,
+  this.velocityX = 5,
+  this.velocityY = 2,
   this.radius = 5 ,
   this.colour = 'green',
   this.center = function(){
-    
+
   }
 }
 
