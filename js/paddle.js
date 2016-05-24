@@ -18,16 +18,34 @@ Paddle.prototype.surfaceRange = function () {
   return [lower, upper]
 };
 
-Paddle.prototype.leftPaddleBoundary = function() {
+Paddle.prototype.leftBoundary = function() {
   if(this.x == 0){
     return false
   }
   return true
 };
 
-Paddle.prototype.rightPaddleBoundary = function() {
+Paddle.prototype.rightBoundary = function() {
   if(this.x == (canvas.width - this.width)){
     return false
   }
   return true
+};
+
+Paddle.prototype.topSide = function () {
+  return this.y
+};
+
+Paddle.prototype.leftEdge = function () {
+  var leftCorner, leftMedium;
+  leftCorner = this.surfaceRange()[0];
+  leftMedium = leftCorner + 10;
+  return [leftCorner, leftMedium];
+};
+
+Paddle.prototype.rightEdge = function () {
+  var rightCorner, rightMedium;
+  rightCorner = this.surfaceRange()[1];
+  rightMedium = rightCorner + 10;
+  return [rightCorner, rightMedium];
 };
