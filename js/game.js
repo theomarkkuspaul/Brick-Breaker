@@ -10,7 +10,7 @@ $(document).ready(function(){
   var paddle = new Paddle()
   paddle.drawPaddle = function() {
     ctx.fillRect(this.x,this.y,this.width,this.height);
-    ctx.fillStyle = "red";
+    ctx.fillStyle = this.colour;
   }
 
   var ball = new Ball()
@@ -18,7 +18,7 @@ $(document).ready(function(){
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, true);
     ctx.closePath();
-    ctx.fillStyle = this.color;
+    ctx.fillStyle = this.colour;
     ctx.fill();
   }
 
@@ -37,15 +37,15 @@ $(document).ready(function(){
     if ( ball.reachedBoundary(ball.y + ball.velocityY, canvas.height, '>') || ball.reachedBoundary(ball.y + ball.velocityY, 0, '<'))  {
       ball.velocityY = -ball.velocityY;
     }
-    if( ball.reachedBoundary(ball.x + ball.velocityX, canvas.width, '>') || ball.reachedBoundary(ball.x + ball.velocityX, 0, '<')){
+    if ( ball.reachedBoundary(ball.x + ball.velocityX, canvas.width, '>') || ball.reachedBoundary(ball.x + ball.velocityX, 0, '<')){
       ball.velocityX = -ball.velocityX;
     }
-    
+
     // if (ball.x + ball.velocityX > canvas.width || ball.x + ball.velocityX < 0) {
     //   ball.velocityX = -ball.velocityX;
     // }
 
-    if (ball.y > canvas.height - 30 ){
+    if (ball.bottomEdge() > canvas.height - 30 ){
       if (ball.x > paddle.surfaceRange()[0] && ball.x < paddle.surfaceRange()[1]){
         console.log('hit');
         ball.velocityY = -ball.velocityY;
