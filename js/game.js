@@ -41,26 +41,37 @@ $(document).ready(function(){
       ball.velocityX = -ball.velocityX;
     }
 
-    endGame();
+    // endGame();
+
+    if ( ball.bottomEdge() == canvas.height){
+      console.log('game over!')
+      alert('Game Over!');
+    }
     // if (ball.x + ball.velocityX > canvas.width || ball.x + ball.velocityX < 0) {
     //   ball.velocityX = -ball.velocityX;
     // }
 
-    if (ball.bottomEdge() == paddle.topEdge() ){
-      if (ball.x > paddle.surfaceRange()[0] && ball.x < paddle.surfaceRange()[1]){
+    if (ball.bottomEdge() == paddle.topEdge() ){ // triggers if the y coor of the ball matches the top side of the paddle
+      if (ball.x > paddle.surfaceRange()[0] && ball.x < paddle.center()){
+
         // console.log('hit');
-        ball.velocityY = -ball.velocityY;
-      };
+        if ( ball.velocityX < 0){
+          ball.velocityY = -ball.velocityY;
+        } else {
+          ball.velocityX = -ball.velocityX
+          ball.velocityY = -ball.velocityY;
+        };
+      } else if (ball.x < paddle.surfaceRange()[1] && ball.x > paddle.center()) {
+        if ( ball.velocityX > 0){
+          ball.velocityY = -ball.velocityY;
+        } else {
+          ball.velocityX = -ball.velocityX
+          ball.velocityY = -ball.velocityY;
+        };
+
+      }
     }
   }
-
-
-var endGame = function(){
-  if ( ball.bottomEdge() == canvas.height){
-    alert('Game Over!')
-    ctx.globalCompositeOperation = "destination-out"; // makes all shapes disappear
-  }
-}
 
 
 var refreshRate = 10, leftKeyDown = false, rightKeyDown = false
