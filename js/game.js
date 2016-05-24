@@ -30,7 +30,7 @@ $(document).ready(function(){
     ball.x += ball.velocityX;
     ball.y += ball.velocityY;
     raf = window.requestAnimationFrame(move);
-
+    console.log(ball.bottomEdge())
     // if (ball.y + ball.velocityY > canvas.height || ball.y + ball.velocityY < 0) {
     //   ball.velocityY = -ball.velocityY;
     // }
@@ -45,7 +45,8 @@ $(document).ready(function(){
     //   ball.velocityX = -ball.velocityX;
     // }
 
-    if (ball.bottomEdge() > canvas.height - 30 ){
+    if (ball.bottomEdge() == paddle.topEdge() ){
+      debugger;
       if (ball.x > paddle.surfaceRange()[0] && ball.x < paddle.surfaceRange()[1]){
         console.log('hit');
         ball.velocityY = -ball.velocityY;

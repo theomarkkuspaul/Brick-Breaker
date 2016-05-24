@@ -4,8 +4,11 @@ var Ball = function(){
   this.y = 100,
   this.velocityX = 2.5,
   this.velocityY = 1,
-  this.radius = 3 ,
-  this.colour = 'green'
+  this.radius = 5 ,
+  this.colour = 'green',
+  this.center = function(){
+    
+  }
 }
 
 Ball.prototype.reachedBoundary = function (startPos, boundary, comparitor) {
@@ -30,7 +33,7 @@ Ball.prototype.rightEdge = function () {
 };
 
 Ball.prototype.bottomEdge = function () {
-  return this.y - this.radius
+  return this.y
 };
 
 Ball.prototype.topEdge = function () {

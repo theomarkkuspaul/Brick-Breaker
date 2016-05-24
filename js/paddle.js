@@ -31,3 +31,7 @@ Paddle.prototype.rightPaddleBoundary = function() {
   }
   return true
 };
+
+Paddle.prototype.topEdge = function () {
+  return this.y
+};
