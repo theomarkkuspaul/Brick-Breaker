@@ -34,22 +34,14 @@ $(document).ready(function(){
     // if (ball.y + ball.velocityY > canvas.height || ball.y + ball.velocityY < 0) {
     //   ball.velocityY = -ball.velocityY;
     // }
-    if ( ball.reachedBoundary(ball.y + ball.velocityY, canvas.height, '>') || ball.reachedBoundary(ball.y + ball.velocityY, 0, '<'))  {
-      ball.velocityY = -ball.velocityY;
-    }
-    if ( ball.reachedBoundary(ball.x + ball.velocityX, canvas.width, '>') || ball.reachedBoundary(ball.x + ball.velocityX, 0, '<')){
-      ball.velocityX = -ball.velocityX;
-    }
 
-    // endGame();
 
-    if ( ball.bottomEdge() == canvas.height){
-      console.log('game over!')
-      alert('Game Over!');
-    }
-    // if (ball.x + ball.velocityX > canvas.width || ball.x + ball.velocityX < 0) {
-    //   ball.velocityX = -ball.velocityX;
-    // }
+    endGame();
+    ball.reachedBoundary();
+    ballContactsPaddle(ball, paddle);
+
+
+
 
     if (ball.bottomEdge() == paddle.topSide() ){ // triggers if the y coor of the ball matches the top side of the paddle
       debugger;
@@ -74,6 +66,12 @@ $(document).ready(function(){
     }
   }
 
+var endGame() = function(){
+  if ( ball.bottomEdge() == canvas.height){
+    console.log('game over!')
+    alert('Game Over!');
+  }
+}
 
 var refreshRate = 10, leftKeyDown = false, rightKeyDown = false
 
