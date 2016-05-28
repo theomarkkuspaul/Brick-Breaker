@@ -19,14 +19,16 @@ $(document).ready(function(){
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, true);
     ctx.closePath();
     ctx.fillStyle = this.colour;
-    ctx.fill();
   }
 
 
   var move = function(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     ball.drawBall()
     paddle.drawPaddle()
+    ctx.fill();
+    
     ball.x += ball.velocityX;
     ball.y += ball.velocityY;
     raf = window.requestAnimationFrame(move);
@@ -37,7 +39,7 @@ $(document).ready(function(){
     endGame();
     ball.reachedBoundary();
     if(ballContactsPaddle(ball, paddle)){
-      paddleBounce(ball, paddle)
+      paddleBounce(ball, paddle);
     };
 
   }

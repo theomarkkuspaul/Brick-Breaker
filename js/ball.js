@@ -12,17 +12,6 @@ var Ball = function(){
 }
 
 Ball.prototype.reachedBoundary = function () {
-  // if(comparitor == '>'){
-  //   if(startPos > boundary){
-  //     return true;
-  //   }
-  // } else if (comparitor == '<') {
-  //   if(boundary > startPos){
-  //     return true;
-  //   }
-  // }
-  // return false;
-  // debugger;
   if (this.y + this.velocityY > canvas.height || this.y + this.velocityY < 0) {
     // this.velocityY = -this.velocityY;
     this.reverseYVelocity()

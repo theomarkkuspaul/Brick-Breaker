@@ -4,29 +4,31 @@ var ballContactsPaddle = function(ball, paddle){
   if( ball.bottomEdge() == paddle.topSide()){
     return true
   }
+  return false
 }
 
 var paddleBounce = function(ball, paddle){
-  if ( ball.x.isBetween(paddle.surfaceRange()[0], paddle.center()) ){
-
     if ( ball.x.isBetween(paddle.leftEdge()[0],paddle.leftEdge()[1])){
-      console.log('sharp left')
-      if ( ball.velocityX > 0 ){
-        ball.velocityX += 3
-        ball.velocityX = -ball.velocityX
-        ball.reverseYVelocity()
-      } else {
-        ball.velocityX += -3
-        ball.reverseYVelocity()
-      }
-    } else {
+      sharpBounce('left', ball);
+    } else if ( ball.x.isBetween(paddle.rightEdge()[1],paddle.rightEdge()[0])){
+      sharpBounce('right', ball);
+  } else {
+    ball.reverseYVelocity()
+  }
+};
 
+var sharpBounce = function (side, ball) {
+  if (side == 'left'){
+    console.log('sharp left')
+    if ( ball.velocityX > 0 ){
+      ball.velocityX += 3
+      ball.velocityX = -ball.velocityX
+      ball.reverseYVelocity()
+    } else {
+      ball.velocityX += -3
       ball.reverseYVelocity()
     }
-
-  } else if ( ball.x.isBetween(paddle.center(), paddle.surfaceRange()[1])
-) {
-  if ( ball.x.isBetween(paddle.rightEdge()[1],paddle.rightEdge()[0])){
+  } else if (side == 'right'){
     console.log('sharp right')
     if ( ball.velocityX > 0 ){
       ball.velocityX += 3
@@ -36,10 +38,5 @@ var paddleBounce = function(ball, paddle){
       ball.velocityX = -ball.velocityX
       ball.reverseYVelocity()
     }
-  } else {
-
-    ball.reverseYVelocity()
   }
-
-}
 }
