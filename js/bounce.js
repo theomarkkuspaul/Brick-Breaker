@@ -12,7 +12,7 @@ var ballContactsPaddle = function(ball, paddle){
           ball.velocityX = -ball.velocityX
           ball.reverseYVelocity()
         } else {
-          ball.velocityX += 3
+          ball.velocityX += -3
           ball.reverseYVelocity()
         }
       } else {
@@ -28,7 +28,7 @@ var ballContactsPaddle = function(ball, paddle){
         ball.velocityX += 3
         ball.reverseYVelocity()
       } else {
-        ball.velocityX += 3
+        ball.velocityX += -3
         ball.velocityX = -ball.velocityX
         ball.reverseYVelocity()
       }

@@ -38,30 +38,6 @@ $(document).ready(function(){
     ball.reachedBoundary();
     ballContactsPaddle(ball, paddle);
 
-
-
-
-    // if (ball.bottomEdge() == paddle.topSide() ){ // triggers if the y coor of the ball matches the top side of the paddle
-    //   debugger;
-    //   if (ball.x.isBetween(paddle.surfaceRange()[0], paddle.center())){
-    //
-    //     // console.log('hit');
-    //     if ( ball.velocityX < 0 ){
-    //       ball.velocityY = -ball.velocityY;
-    //     } else {
-    //       ball.velocityX = -ball.velocityX
-    //       ball.velocityY = -ball.velocityY;
-    //     };
-    //   } else if (ball.x < paddle.surfaceRange()[1] && ball.x > paddle.center()) {
-    //     if ( ball.velocityX > 0){
-    //       ball.velocityY = -ball.velocityY;
-    //     } else {
-    //       ball.velocityX = -ball.velocityX
-    //       ball.velocityY = -ball.velocityY;
-    //     };
-    //
-    //   }
-    // }
   }
 
 var endGame = function(){
