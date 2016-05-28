@@ -1,35 +1,22 @@
 
 
 var ballContactsPaddle = function(ball, paddle){
-
   if( ball.bottomEdge() == paddle.topSide()){
-    if ( ball.x.isBetween(paddle.surfaceRange()[0], paddle.center()) ){
+    return true
+  }
+}
 
-      if ( ball.x.isBetween(paddle.leftEdge()[0],paddle.leftEdge()[1])){
-        console.log('sharp left')
-        if ( ball.velocityX > 0 ){
-          ball.velocityX += 3
-          ball.velocityX = -ball.velocityX
-          ball.reverseYVelocity()
-        } else {
-          ball.velocityX += -3
-          ball.reverseYVelocity()
-        }
-      } else {
+var paddleBounce = function(ball, paddle){
+  if ( ball.x.isBetween(paddle.surfaceRange()[0], paddle.center()) ){
 
-        ball.reverseYVelocity()
-      }
-
-    } else if ( ball.x.isBetween(paddle.center(), paddle.surfaceRange()[1])
-  ) {
-    if ( ball.x.isBetween(paddle.rightEdge()[1],paddle.rightEdge()[0])){
-      console.log('sharp right')
+    if ( ball.x.isBetween(paddle.leftEdge()[0],paddle.leftEdge()[1])){
+      console.log('sharp left')
       if ( ball.velocityX > 0 ){
         ball.velocityX += 3
+        ball.velocityX = -ball.velocityX
         ball.reverseYVelocity()
       } else {
         ball.velocityX += -3
-        ball.velocityX = -ball.velocityX
         ball.reverseYVelocity()
       }
     } else {
@@ -37,6 +24,21 @@ var ballContactsPaddle = function(ball, paddle){
       ball.reverseYVelocity()
     }
 
+  } else if ( ball.x.isBetween(paddle.center(), paddle.surfaceRange()[1])
+) {
+  if ( ball.x.isBetween(paddle.rightEdge()[1],paddle.rightEdge()[0])){
+    console.log('sharp right')
+    if ( ball.velocityX > 0 ){
+      ball.velocityX += 3
+      ball.reverseYVelocity()
+    } else {
+      ball.velocityX += -3
+      ball.velocityX = -ball.velocityX
+      ball.reverseYVelocity()
+    }
+  } else {
+
+    ball.reverseYVelocity()
   }
 
 }

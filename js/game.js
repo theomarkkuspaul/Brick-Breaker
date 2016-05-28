@@ -36,7 +36,9 @@ $(document).ready(function(){
 
     endGame();
     ball.reachedBoundary();
-    ballContactsPaddle(ball, paddle);
+    if(ballContactsPaddle(ball, paddle)){
+      paddleBounce(ball, paddle)
+    };
 
   }
 
