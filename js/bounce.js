@@ -2,7 +2,9 @@
 
 var ballContactsPaddle = function(ball, paddle){
   if( ball.bottomEdge() == paddle.topSide()){
-    return true
+    if (ball.x >= paddle.surfaceRange()[0] && ball.x <= paddle.surfaceRange()[1]){
+      return true;
+    }
   }
   return false
 }
