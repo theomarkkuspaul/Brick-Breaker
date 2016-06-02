@@ -21,11 +21,18 @@ $(document).ready(function(){
     ctx.fillStyle = this.colour;
   }
 
+  var brick = new Brick()
+  brick.drawBrick = function() {
+    ctx.fillRect(this.x,this.y,this.width,this.height);
+    ctx.fillStyle = this.colour;
+  }
+
 
   var move = function(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     ball.drawBall()
+    brick.drawBrick()
     paddle.drawPaddle()
     ctx.fill();
 
