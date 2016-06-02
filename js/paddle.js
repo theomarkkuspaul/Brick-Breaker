@@ -39,13 +39,13 @@ Paddle.prototype.topSide = function () {
 Paddle.prototype.leftEdge = function () {
   var leftCorner, leftMedium;
   leftCorner = this.surfaceRange()[0];
-  leftMedium = leftCorner + 10;
+  leftMedium = leftCorner + 20;
   return [leftCorner, leftMedium];
 };
 
 Paddle.prototype.rightEdge = function () {
   var rightCorner, rightMedium;
   rightCorner = this.surfaceRange()[1];
-  rightMedium = rightCorner + 10;
+  rightMedium = rightCorner - 20;
   return [rightCorner, rightMedium];
 };

@@ -19,61 +19,37 @@ $(document).ready(function(){
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, true);
     ctx.closePath();
     ctx.fillStyle = this.colour;
-    ctx.fill();
   }
 
 
   var move = function(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     ball.drawBall()
     paddle.drawPaddle()
+    ctx.fill();
+
     ball.x += ball.velocityX;
     ball.y += ball.velocityY;
     raf = window.requestAnimationFrame(move);
 
-    // if (ball.y + ball.velocityY > canvas.height || ball.y + ball.velocityY < 0) {
-    //   ball.velocityY = -ball.velocityY;
-    // }
-    if ( ball.reachedBoundary(ball.y + ball.velocityY, canvas.height, '>') || ball.reachedBoundary(ball.y + ball.velocityY, 0, '<'))  {
-      ball.velocityY = -ball.velocityY;
-    }
-    if ( ball.reachedBoundary(ball.x + ball.velocityX, canvas.width, '>') || ball.reachedBoundary(ball.x + ball.velocityX, 0, '<')){
-      ball.velocityX = -ball.velocityX;
-    }
 
-    // endGame();
 
-    if ( ball.bottomEdge() == canvas.height){
-      console.log('game over!')
-      alert('Game Over!');
-    }
-    // if (ball.x + ball.velocityX > canvas.width || ball.x + ball.velocityX < 0) {
-    //   ball.velocityX = -ball.velocityX;
-    // }
 
-    if (ball.bottomEdge() == paddle.topSide() ){ // triggers if the y coor of the ball matches the top side of the paddle
-      debugger;
-      if (ball.x.isBetween(paddle.surfaceRange()[0], paddle.center())){
+    endGame();
+    ball.reachedBoundary();
+    if(ballContactsPaddle(ball, paddle)){
+      paddleBounce(ball, paddle);
+    };
 
-        // console.log('hit');
-        if ( ball.velocityX < 0 ){
-          ball.velocityY = -ball.velocityY;
-        } else {
-          ball.velocityX = -ball.velocityX
-          ball.velocityY = -ball.velocityY;
-        };
-      } else if (ball.x < paddle.surfaceRange()[1] && ball.x > paddle.center()) {
-        if ( ball.velocityX > 0){
-          ball.velocityY = -ball.velocityY;
-        } else {
-          ball.velocityX = -ball.velocityX
-          ball.velocityY = -ball.velocityY;
-        };
-
-      }
-    }
   }
 
+var endGame = function(){
+  if ( ball.bottomEdge() == canvas.height){
+    console.log('game over!')
+    alert('Game Over!');
+  }
+}
 
 var refreshRate = 10, leftKeyDown = false, rightKeyDown = false
 
@@ -125,8 +101,8 @@ var refreshRate = 10, leftKeyDown = false, rightKeyDown = false
 // this prototype function on the Number class takes two parameters: lower and upper. The function checks whether the number the function was called upon is between these two ranges; returns a boolean.
 
 Number.prototype.isBetween = function(lower, upper){
-  if ( this > lower && this < upper ) {
+  if ( this >= lower && this <= upper ) {
     return true
   }
-  false
+  return false
 }
