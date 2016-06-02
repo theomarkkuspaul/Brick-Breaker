@@ -28,7 +28,7 @@ $(document).ready(function(){
     ball.drawBall()
     paddle.drawPaddle()
     ctx.fill();
-    
+
     ball.x += ball.velocityX;
     ball.y += ball.velocityY;
     raf = window.requestAnimationFrame(move);
