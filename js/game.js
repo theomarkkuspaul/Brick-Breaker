@@ -6,7 +6,7 @@ $(document).ready(function(){
   var ctx = canvas.getContext('2d');
   var raf, game;
 
-  var player = new Player
+  var player = new Player()
   var paddle = new Paddle()
   Paddle.prototype.drawPaddle = function() {
     ctx.fillRect(this.x,this.y,this.width,this.height);
