@@ -49,8 +49,6 @@ $(document).ready(function(){
     raf = window.requestAnimationFrame(move);
 
 
-
-
     endGame();
     ball.reachedBoundary();
     if(ballContactsPaddle(ball, paddle)){

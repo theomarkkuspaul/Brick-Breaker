@@ -22,20 +22,20 @@ var sharpBounce = function (side, ball) {
   if (side == 'left'){
     console.log('sharp left')
     if ( ball.velocityX > 0 ){
-      ball.velocityX += 3
+      ball.velocityX += 2
       ball.velocityX = -ball.velocityX
       ball.reverseYVelocity()
     } else {
-      ball.velocityX += -3
+      ball.velocityX += -2
       ball.reverseYVelocity()
     }
   } else if (side == 'right'){
     console.log('sharp right')
     if ( ball.velocityX > 0 ){
-      ball.velocityX += 3
+      ball.velocityX += 2
       ball.reverseYVelocity()
     } else {
-      ball.velocityX += -3
+      ball.velocityX += -2
       ball.velocityX = -ball.velocityX
       ball.reverseYVelocity()
     }
@@ -48,9 +48,19 @@ var ballContactsBrick = function(ball, brick){
       ball.reverseYVelocity()
       return true;
     };
-  } else if (ball.x == brick.horizontalRange()[0]) {
-    if ( ball.y >= brick.verticalRange()[0] && ball.y <= brick.verticalRange()[1]){
-      debugger;
+  } else if ( ball.y >= brick.verticalRange()[0] && ball.y <= brick.verticalRange()[1] ) {
+    if ( ball.x >= brick.horizontalRange()[0] && ball.x <= brick.horizontalRange()[1]){
+      if ( ball.x + ball.velocityX >= brick.horizontalRange()[0] ){
+        ball.reverseXVelocity();
+        return true;
+      }
+    }
+  } else if ( ball.y >= brick.verticalRange()[0] && ball.y <= brick.verticalRange()[1] ) {
+    if ( ball.x >= brick.horizontalRange()[0] && ball.x <= brick.horizontalRange()[1]){
+      if ( ball.x + ball.velocityX <= brick.horizontalRange()[1] ){
+        ball.reverseXVelocity();
+        return true;
+      }
     }
   }
 }
