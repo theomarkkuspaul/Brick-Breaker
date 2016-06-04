@@ -8,13 +8,14 @@ $(document).ready(function(){
 
   var player = new Player()
   var paddle = new Paddle()
-  Paddle.prototype.drawPaddle = function() {
+  paddle.drawPaddle = function() {
     ctx.fillRect(this.x,this.y,this.width,this.height);
     ctx.fillStyle = this.colour;
   }
 
   var ball = new Ball()
-  Ball.prototype.drawBall = function(){
+  ball.drawBall = function(){
+    ball.reachedBoundary();
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, true);
     ctx.closePath();
@@ -54,7 +55,7 @@ $(document).ready(function(){
       "player": player
     }
     endGame(game);
-    ball.reachedBoundary();
+
     if(ballContactsPaddle(ball, paddle)){
       paddleBounce(ball, paddle);
     }
