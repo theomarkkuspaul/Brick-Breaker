@@ -7,10 +7,10 @@ var Brick = function(x, y){
   this.colour = "blue"
 }
 
-Brick.prototype.horizontalArea = function () {
-  return {"left": this.x, "right": this.x + this.width}
+Brick.prototype.horizontalRange = function () {
+  return [this.x, (this.x + this.width)]
 };
 
-Brick.prototype.verticalArea = function () {
-  return {"top": this.y, "bottom": this.y + this.height}
+Brick.prototype.verticalRange = function () {
+  return [this.y, (this.y + this.height)]
 };
