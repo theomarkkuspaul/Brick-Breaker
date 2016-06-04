@@ -1,10 +1,10 @@
 var endGame = function(game){
-  debugger;
-  loseLife(game.ball, game.player)
+  missBall(game.ball, game.player)
 }
 
-var loseLife = function(ball, player){
+var missBall = function(ball, player){
   if ( ball.bottomEdge().y == canvas.height){
+    debugger;
     console.log('game over!')
     alert('Game Over!');
   }
