@@ -47,13 +47,13 @@ Ball.prototype.rightEdge = function () {
 Ball.prototype.bottomEdge = function () {
   return {
     "x":this.x,
-    "y":this.y
+    "y":this.y + this.radius
   }
 };
 
 Ball.prototype.topEdge = function () {
   return {
     "x":this.x,
-    "y":this.y - this.radius
+    "y":this.y
   }
 };
