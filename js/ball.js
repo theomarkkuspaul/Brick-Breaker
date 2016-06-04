@@ -31,17 +31,29 @@ Ball.prototype.reverseYVelocity = function () {
 }
 
 Ball.prototype.leftEdge = function () {
-  return this.x - this.radius
+  return {
+    "x":this.x - this.radius,
+    "y":this.y + this.radius
+  }
 };
 
 Ball.prototype.rightEdge = function () {
-  return this.x + this.radius
+  return {
+    "x":this.x + this.radius,
+    "y":this.y + this.radius
+  }
 };
 
 Ball.prototype.bottomEdge = function () {
-  return this.y
+  return {
+    "x":this.x,
+    "y":this.y
+  }
 };
 
 Ball.prototype.topEdge = function () {
-  return this.y + this.radius
+  return {
+    "x":this.x,
+    "y":this.y + ( this.radius * 2 )
+  }
 };
