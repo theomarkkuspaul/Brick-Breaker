@@ -55,3 +55,7 @@ var ballContactsBrick = function(ball, bricks){
     })
   };
 }
+
+var brickBounce = function(ball, brick){
+  
+}
