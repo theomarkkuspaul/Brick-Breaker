@@ -1,5 +1,6 @@
 var endGame = function(ball, bricks, player){
-  loseLife()
+  debugger;
+  loseLife(game.ball, game.player)
 }
 
 var loseLife = function(ball, player){
