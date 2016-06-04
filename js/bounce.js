@@ -1,7 +1,7 @@
 
 
 var ballContactsPaddle = function(ball, paddle){
-  if( ball.bottomEdge() == paddle.topSide()){
+  if( ball.bottomEdge().y == paddle.topSide()){
     if (ball.x >= paddle.surfaceRange()[0] && ball.x <= paddle.surfaceRange()[1]){
       return true;
     }
@@ -41,4 +41,18 @@ var sharpBounce = function (side, ball) {
       ball.reverseYVelocity()
     }
   }
+}
+
+var ballContactsBrick = function(ball, bricks){
+  // debugger;
+  for (var layer in bricks){
+    bricks[layer].map(function(brick){
+      if ( ball.topEdge().y == brick.verticalRange()[1]){
+        debugger;
+        if ( ball.topEdge().x >= brick.horizontalRange()[0] && ball.topEdge().x <= brick.horizontalRange()[1]){
+        }
+      }
+
+    })
+  };
 }

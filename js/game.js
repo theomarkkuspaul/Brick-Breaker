@@ -53,12 +53,16 @@ $(document).ready(function(){
     ball.reachedBoundary();
     if(ballContactsPaddle(ball, paddle)){
       paddleBounce(ball, paddle);
-    };
+    }
+
+    if(ballContactsBrick(ball, bricks)){
+
+    }
 
   }
 
 var endGame = function(){
-  if ( ball.bottomEdge() == canvas.height){
+  if ( ball.bottomEdge().y == canvas.height){
     console.log('game over!')
     alert('Game Over!');
   }
