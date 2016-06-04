@@ -8,25 +8,34 @@ $(document).ready(function(){
   var raf;
 
   var paddle = new Paddle()
-  paddle.drawPaddle = function() {
+  Paddle.prototype.drawPaddle = function() {
     ctx.fillRect(this.x,this.y,this.width,this.height);
     ctx.fillStyle = this.colour;
   }
 
   var ball = new Ball()
-  ball.drawBall = function(){
+  Ball.prototype.drawBall = function(){
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, true);
     ctx.closePath();
     ctx.fillStyle = this.colour;
   }
 
+  var bricks = {
+    "layer1": [new Brick(), new Brick(140), new Brick(230), new Brick(320), new Brick(410), new Brick(500), new Brick(590), new Brick(680)],
+    "layer2":[new Brick(50, 80),new Brick(140, 80), new Brick(230, 80), new Brick(320, 80), new Brick(410, 80), new Brick(500, 80), new Brick(590, 80), new Brick(680, 80)]
+   }
+
 
   var move = function(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    ball.drawBall()
     paddle.drawPaddle()
+    for( var layer in bricks ){
+      bricks[layer].map(function(brick){
+        brick.drawBrick();
+      });
+    }
+    ball.drawBall();
     ctx.fill();
 
     ball.x += ball.velocityX;
