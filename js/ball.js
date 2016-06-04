@@ -54,6 +54,6 @@ Ball.prototype.bottomEdge = function () {
 Ball.prototype.topEdge = function () {
   return {
     "x":this.x,
-    "y":this.y - ( this.radius * 2 )
+    "y":this.y - this.radius
   }
 };
