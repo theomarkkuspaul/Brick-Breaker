@@ -55,9 +55,7 @@ $(document).ready(function(){
       paddleBounce(ball, paddle);
     }
 
-    if(ballContactsBrick(ball, bricks)){
-
-    }
+    ballContactsBrick(ball, bricks)
 
   }
 

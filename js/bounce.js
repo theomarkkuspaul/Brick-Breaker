@@ -6,7 +6,6 @@ var ballContactsPaddle = function(ball, paddle){
       return true;
     }
   }
-  return false
 }
 
 var paddleBounce = function(ball, paddle){
@@ -48,13 +47,17 @@ var ballContactsBrick = function(ball, bricks){
     bricks[layer].map(function(brick){
       if ( ball.topEdge().y == brick.verticalRange()[1]){
         if ( ball.topEdge().x >= brick.horizontalRange()[0] && ball.topEdge().x <= brick.horizontalRange()[1]){
-          return true;
+          brickBounce(ball, brick, "vertical")
         };
       };
     })
   };
 }
 
-var brickBounce = function(ball, brick){
-
+var brickBounce = function(ball, brick, direction){
+  if (direction == "vertical"){
+    ball.reverseYVelocity()
+  } else {
+    ball.reverseXVelocity()
+  }
 }
