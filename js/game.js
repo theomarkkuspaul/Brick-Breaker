@@ -37,6 +37,7 @@ $(document).ready(function(){
     for( var layer in bricks ){
       bricks[layer].map(function(brick){
         brick.drawBrick();
+        console.log(brick.topSide())
       });
     }
     ball.drawBall();
