@@ -1,9 +1,10 @@
 var endGame = function(game){
-  if ( missBall(game.ball, game.player)){
-    if (game.player.lives == 0) {
-      console.log('game over!')
-      alert('Game Over!');
-    }
+
+  if (game.player.lives > 0) {
+    missBall(game.ball, game.player)
+  } else if (game.player.lives <= 0 ){  
+    console.log('game over!')
+    alert('Game Over!');
   }
 }
 
