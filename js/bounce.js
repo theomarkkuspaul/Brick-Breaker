@@ -44,7 +44,6 @@ var sharpBounce = function (side, ball) {
 }
 
 var ballContactsBrick = function(ball, bricks){
-  // debugger;
   for (var layer in bricks){
     bricks[layer].map(function(brick){
       if ( ball.topEdge().y == brick.verticalRange()[1]){
@@ -57,5 +56,5 @@ var ballContactsBrick = function(ball, bricks){
 }
 
 var brickBounce = function(ball, brick){
-  
+
 }
