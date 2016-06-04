@@ -48,6 +48,11 @@ var ballContactsBrick = function(ball, brick){
       ball.reverseYVelocity()
       return true;
     };
+  } else if ( ball.bottomEdge().y == brick.verticalRange()[0]){
+    if ( ball.bottomEdge().x >= brick.horizontalRange()[0] && ball.topEdge().x <= brick.horizontalRange()[1]){
+      ball.reverseYVelocity()
+      return true;
+    };
   } else if ( ball.y >= brick.verticalRange()[0] && ball.y <= brick.verticalRange()[1] ) {
     if ( ball.x >= brick.horizontalRange()[0] && ball.x <= brick.horizontalRange()[1]){
       if ( ball.x + ball.velocityX >= brick.horizontalRange()[0] ){
