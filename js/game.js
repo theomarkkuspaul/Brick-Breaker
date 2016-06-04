@@ -54,9 +54,13 @@ $(document).ready(function(){
     if(ballContactsPaddle(ball, paddle)){
       paddleBounce(ball, paddle);
     }
-
-    ballContactsBrick(ball, bricks)
-
+    for (var layer in bricks){
+      bricks[layer].map(function(brick){
+        if (ballContactsBrick(ball, brick)) {
+          debugger;
+        }
+      })
+    }
   }
 
 var endGame = function(){
