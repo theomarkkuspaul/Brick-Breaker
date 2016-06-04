@@ -3,9 +3,7 @@ var endGame = function(game){
   if (game.player.lives > 0) {
     missBall(game.ball, game.player)
   } else if (game.player.lives <= 0 ){
-    console.log('game over!')
-    alert('Game Over!');
-    window.location.reload()
+    gameOver()
   }
 }
 
@@ -14,4 +12,10 @@ var missBall = function(ball, player){
     return player.loseLife()
   }
   return false
+}
+
+function gameOver() {
+  console.log('game over!')
+  alert('Game Over!');
+  window.location.reload()
 }
