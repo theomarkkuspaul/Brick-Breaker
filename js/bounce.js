@@ -42,3 +42,7 @@ var sharpBounce = function (side, ball) {
     }
   }
 }
+
+var ballContactsBrick = function(ball, bricks){
+  debugger;
+}
