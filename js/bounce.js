@@ -48,8 +48,8 @@ var ballContactsBrick = function(ball, bricks){
   for (var layer in bricks){
     bricks[layer].map(function(brick){
       if ( ball.topEdge().y == brick.verticalRange()[1]){
-        debugger;
         if ( ball.topEdge().x >= brick.horizontalRange()[0] && ball.topEdge().x <= brick.horizontalRange()[1]){
+          debugger;
         }
       }
 
