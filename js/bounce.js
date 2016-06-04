@@ -6,7 +6,6 @@ var ballContactsPaddle = function(ball, paddle){
       return true;
     }
   }
-  return false
 }
 
 var paddleBounce = function(ball, paddle){
@@ -23,36 +22,50 @@ var sharpBounce = function (side, ball) {
   if (side == 'left'){
     console.log('sharp left')
     if ( ball.velocityX > 0 ){
-      ball.velocityX += 3
+      ball.velocityX += 2
       ball.velocityX = -ball.velocityX
       ball.reverseYVelocity()
     } else {
-      ball.velocityX += -3
+      ball.velocityX += -2
       ball.reverseYVelocity()
     }
   } else if (side == 'right'){
     console.log('sharp right')
     if ( ball.velocityX > 0 ){
-      ball.velocityX += 3
+      ball.velocityX += 2
       ball.reverseYVelocity()
     } else {
-      ball.velocityX += -3
+      ball.velocityX += -2
       ball.velocityX = -ball.velocityX
       ball.reverseYVelocity()
     }
   }
 }
 
-var ballContactsBrick = function(ball, bricks){
-  // debugger;
-  for (var layer in bricks){
-    bricks[layer].map(function(brick){
-      if ( ball.topEdge().y == brick.verticalRange()[1]){
-        if ( ball.topEdge().x >= brick.horizontalRange()[0] && ball.topEdge().x <= brick.horizontalRange()[1]){
-          debugger;
-        }
+var ballContactsBrick = function(ball, brick){
+  if ( ball.topEdge().y == brick.verticalRange()[1]){
+    if ( ball.topEdge().x >= brick.horizontalRange()[0] && ball.topEdge().x <= brick.horizontalRange()[1]){
+      ball.reverseYVelocity()
+      return true;
+    };
+  } else if ( ball.bottomEdge().y == brick.verticalRange()[0]){
+    if ( ball.bottomEdge().x >= brick.horizontalRange()[0] && ball.topEdge().x <= brick.horizontalRange()[1]){
+      ball.reverseYVelocity()
+      return true;
+    };
+  } else if ( ball.y >= brick.verticalRange()[0] && ball.y <= brick.verticalRange()[1] ) {
+    if ( ball.x >= brick.horizontalRange()[0] && ball.x <= brick.horizontalRange()[1]){
+      if ( ball.x + ball.velocityX >= brick.horizontalRange()[0] ){
+        ball.reverseXVelocity();
+        return true;
       }
-
-    })
-  };
+    }
+  } else if ( ball.y >= brick.verticalRange()[0] && ball.y <= brick.verticalRange()[1] ) {
+    if ( ball.x >= brick.horizontalRange()[0] && ball.x <= brick.horizontalRange()[1]){
+      if ( ball.x + ball.velocityX <= brick.horizontalRange()[1] ){
+        ball.reverseXVelocity();
+        return true;
+      }
+    }
+  }
 }
