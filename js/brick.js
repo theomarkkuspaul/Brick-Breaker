@@ -6,3 +6,11 @@ var Brick = function(x, y){
   this.width = 80,
   this.colour = "blue"
 }
+
+Brick.prototype.horizontalArea = function () {
+  return {"left": this.x, "right": this.x + this.width}
+};
+
+Brick.prototype.verticalArea = function () {
+  return {"top": this.y, "bottom": this.y + this.height}
+};
