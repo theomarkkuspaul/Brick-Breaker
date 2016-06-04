@@ -5,7 +5,7 @@ $(document).ready(function(){
 
   var canvas = $('#canvas')[0];
   var ctx = canvas.getContext('2d');
-  var raf;
+  var raf, game;
 
   var paddle = new Paddle()
   Paddle.prototype.drawPaddle = function() {
@@ -48,8 +48,12 @@ $(document).ready(function(){
     ball.y += ball.velocityY;
     raf = window.requestAnimationFrame(move);
 
-
-    endGame();
+    game = {
+      "ball": ball,
+      "bricks": bricks,
+      "player": player
+    }
+    endGame(game);
     ball.reachedBoundary();
     if(ballContactsPaddle(ball, paddle)){
       paddleBounce(ball, paddle);
@@ -64,12 +68,6 @@ $(document).ready(function(){
     }
   }
 
-var endGame = function(){
-  if ( ball.bottomEdge().y == canvas.height){
-    console.log('game over!')
-    alert('Game Over!');
-  }
-}
 
 var refreshRate = 10, leftKeyDown = false, rightKeyDown = false
 
