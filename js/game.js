@@ -36,7 +36,9 @@ $(document).ready(function(){
     paddle.drawPaddle()
     for( var layer in bricks ){
       bricks[layer].map(function(brick){
-        brick.drawBrick();
+        if ( brick != null || brick != undefined){
+          brick.drawBrick();
+        }
       });
     }
     ball.drawBall();
@@ -55,11 +57,12 @@ $(document).ready(function(){
       paddleBounce(ball, paddle);
     }
     for (var layer in bricks){
-      bricks[layer].map(function(brick){
-        if (ballContactsBrick(ball, brick)) {
-          debugger;
+      for ( var i = 0; i < bricks[layer].length; i++){
+        if (bricks[layer][i] == undefined){
+        } else if ( ballContactsBrick(ball, bricks[layer][i])){
+          return bricks[layer][i] = null
         }
-      })
+      }
     }
   }
 

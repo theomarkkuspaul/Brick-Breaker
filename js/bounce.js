@@ -45,19 +45,12 @@ var sharpBounce = function (side, ball) {
 var ballContactsBrick = function(ball, brick){
   if ( ball.topEdge().y == brick.verticalRange()[1]){
     if ( ball.topEdge().x >= brick.horizontalRange()[0] && ball.topEdge().x <= brick.horizontalRange()[1]){
+      ball.reverseYVelocity()
       return true;
     };
   } else if (ball.x == brick.horizontalRange()[0]) {
     if ( ball.y >= brick.verticalRange()[0] && ball.y <= brick.verticalRange()[1]){
       debugger;
     }
-  }
-}
-
-var brickBounce = function(ball, brick, direction){
-  if (direction == "vertical"){
-    ball.reverseYVelocity()
-  } else {
-    ball.reverseXVelocity()
   }
 }
