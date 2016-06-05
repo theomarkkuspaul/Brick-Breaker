@@ -1,10 +1,14 @@
-function Game(ball, player, paddle, bricks) {
-  this.player = player || new Player(),
-  this.ball = ball || new Ball(),
-  this.paddle = paddle || new Paddle(),
-  this.bricks = bricks || [new Brick(), new Brick(140), new Brick(230), new Brick(320), new Brick(410), new Brick(500), new Brick(590), new Brick(680), new Brick(50, 80),new Brick(140, 80), new Brick(230, 80), new Brick(320, 80), new Brick(410, 80), new Brick(500, 80), new Brick(590, 80), new Brick(680, 80)
-  ]
+function Game(ball, player, paddle) {
+  this.player = player,
+  this.ball = ball,
+  this.paddle = paddle,
+  this.levels = [new LevelOne(), new LevelTwo(), new LevelThree()]
+  this.bricks = this.levels[0].bricks // loads first level
 }
+
+// Game.prototype.loadLevel = function (level) {
+//   return level.bricks
+// }
 
 Game.prototype.endGame = function () {
   if (this.player.lives > 0) {
@@ -12,11 +16,14 @@ Game.prototype.endGame = function () {
   } else if (this.player.lives <= 0 ){
     gameOver()
   }
-  if (stillBricks(this.bricks)) {
-    winGame()
+  if (stillBricks(this.levels[0])) {
+    this.loadNextLevel()
   }
 };
 
+Game.prototype.loadNextLevel = function () {
+  this.bricks = this.levels[1].bricks
+}
 
 var missBall = function(ball, player){
   if ( ball.bottomEdge().y == canvas.height){
@@ -37,14 +44,14 @@ function winGame() {
   window.location.reload()
 }
 
-var stillBricks = function (bricks) {
+var stillBricks = function (level) {
   var counter = 0
-  bricks.map(function(brick){
+  level.bricks.map(function(brick){
     if (brick == null){
       counter += 1;
     };
   });
-  if (counter == 16){
+  if (counter == level.bricks.length){
     return true
   }
 }
