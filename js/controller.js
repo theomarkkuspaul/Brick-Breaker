@@ -50,7 +50,7 @@ function Controller(game, view){
       this.context = this.canvas.getContext("2d");
 
       this.print();
-      this.game.ball.move()
+      this.moveBall()
 
 
       this.raf = window.requestAnimationFrame(this.run);
@@ -72,8 +72,28 @@ Controller.prototype.print = function () {
 }
 
 Controller.prototype.moveBall = function () {
+  this.game.ball.move()
+  if (this.ballContactsPaddle()){
+    this.paddleBounce()
+  }
+};
 
+Controller.prototype.ballContactsPaddle = function () {
+  if( this.game.ball.bottomEdge().y == this.game.paddle.topSide()){
+    if (this.game.ball.x >= this.game.paddle.surfaceRange()[0] && this.game.ball.x <= this.game.paddle.surfaceRange()[1]){
+      return true;
+    }
+  }
+};
 
+Controller.prototype.paddleBounce = function () {
+  if ( this.game.ball.x.isBetween(this.game.paddle.leftEdge()[0],this.game.paddle.leftEdge()[1])){
+    sharpBounce('left', this.game.ball);
+  } else if ( this.game.ball.x.isBetween(this.game.paddle.rightEdge()[1],this.game.paddle.rightEdge()[0])){
+    sharpBounce('right', this.game.ball);
+} else {
+  this.game.ball.reverseYVelocity()
+}
 };
 
 $(document).ready(function(){

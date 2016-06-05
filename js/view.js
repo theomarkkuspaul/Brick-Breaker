@@ -5,8 +5,6 @@ function View(canvas, game) {
 
 }
 
-
-
 View.prototype.drawBall = function (ball, context) {
   context.beginPath();
   context.arc(ball.x, ball.y, ball.radius, 0, Math.PI*2, true);
@@ -23,19 +21,7 @@ View.prototype.drawBrick = function(brick, context){
    context.fillRect(brick.x,brick.y,brick.width,brick.height);
    context.fillStyle = brick.colour;
  }
-  //
-  // ball.drawBall = function(){
-  //   ball.reachedBoundary();
-  //   ctx.beginPath();
-  //   ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, true);
-  //   ctx.closePath();
-  //   ctx.fillStyle = this.colour;
-  // }
-  //
-  //  Brick.prototype.drawBrick = function(){
-  //    ctx.fillRect(this.x,this.y,this.width,this.height);
-  //    ctx.fillStyle = this.colour;
-  //  }
+
 
   // var move = function(){
   //   $('canvas')[0].getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
