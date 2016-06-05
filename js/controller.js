@@ -59,6 +59,8 @@ function Controller(game, view){
   this.run()
 }
 
+
+
 Controller.prototype.print = function () {
   this.context.clearRect(0, 0, canvas.width, canvas.height);
   this.view.drawBall(this.game.ball, this.context);
@@ -106,7 +108,7 @@ $(document).ready(function(){
 
   var canvas = $('#canvas')[0];
   var ctx = canvas.getContext('2d');
-  var game = new Game()
+  var game = new Game(new Ball(), new Player(), new Paddle())
   var view = new View(canvas, game)
   var controller = new Controller(game, view);
   controller.paddleMove();
