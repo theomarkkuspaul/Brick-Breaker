@@ -51,7 +51,7 @@ function Controller(game, view){
 
       this.print();
       this.moveBall()
-
+      this.game.endGame();
 
       this.raf = window.requestAnimationFrame(this.run);
 
@@ -76,12 +76,12 @@ Controller.prototype.moveBall = function () {
   if (this.ballContactsPaddle()){
     this.paddleBounce()
   }
-      for ( var i = 0; i < this.game.bricks.length; i++){
-        if (this.game.bricks[i] == undefined){
-        } else if ( ballContactsBrick(this.game.ball, this.game.bricks[i])){
-          return this.game.bricks[i] = null
-        }
-      }
+  for ( var i = 0; i < this.game.bricks.length; i++){
+    if (this.game.bricks[i] == undefined){
+    } else if ( ballContactsBrick(this.game.ball, this.game.bricks[i])){
+      return this.game.bricks[i] = null
+    }
+  }
 };
 
 Controller.prototype.ballContactsPaddle = function () {
