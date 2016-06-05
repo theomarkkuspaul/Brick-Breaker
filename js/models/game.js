@@ -1,6 +1,6 @@
 function Game(ball, player, paddle, bricks) {
-  this.player = player,
-  this.ball = ball,
-  this.paddle = paddle,
+  this.player = player || new Player(),
+  this.ball = ball || new Ball(),
+  this.paddle = paddle || new Paddle(),
   this.bricks = bricks || []
 }
