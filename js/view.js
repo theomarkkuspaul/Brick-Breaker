@@ -2,26 +2,12 @@
 
 
 function View(canvas, game) {
-  // this.game = game
-  // this.print = function(){
-  //
-  //   this.canvas = canvas
-  //   this.context = this.canvas.getContext("2d");
-  //
-  //   this.draw();
-  //
-  //   this.game.ball.x += this.game.ball.velocityX;
-  //   this.game.ball.y += this.game.ball.velocityY;
-  //   this.raf = window.requestAnimationFrame(this.print);
-  //
-  // }.bind(this);
 
 }
 
 
 
 View.prototype.drawBall = function (ball, context) {
-  ball.reachedBoundary();
   context.beginPath();
   context.arc(ball.x, ball.y, ball.radius, 0, Math.PI*2, true);
   context.closePath();
@@ -32,6 +18,11 @@ View.prototype.drawPaddle = function(paddle, context) {
   context.fillRect(paddle.x,paddle.y,paddle.width,paddle.height);
   context.fillStyle = "blue";
 }
+
+View.prototype.drawBrick = function(brick, context){
+   context.fillRect(brick.x,brick.y,brick.width,brick.height);
+   context.fillStyle = brick.colour;
+ }
   //
   // ball.drawBall = function(){
   //   ball.reachedBoundary();

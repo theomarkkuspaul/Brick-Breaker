@@ -11,14 +11,21 @@ var Ball = function(){
   }
 }
 
+Ball.prototype.move = function () {
+  if (!this.reachedBoundary()){
+    this.x += this.velocityX;
+    this.y += this.velocityY;
+  };
+}
+
 Ball.prototype.reachedBoundary = function () {
   if (this.y + this.velocityY > canvas.height || this.y + this.velocityY < 0) {
     // this.velocityY = -this.velocityY;
-    this.reverseYVelocity()
+    return this.reverseYVelocity()
   }
   if (this.x + this.velocityX > canvas.width || this.x + this.velocityX < 0) {
     // ball.velocityX = -ball.velocityX;
-    this.reverseXVelocity()
+    return this.reverseXVelocity()
   }
 };
 

@@ -48,8 +48,11 @@ function Controller(game, view){
 
       this.canvas = canvas
       this.context = this.canvas.getContext("2d");
+
       this.print();
-      this.moveBall()
+      this.game.ball.move()
+
+
       this.raf = window.requestAnimationFrame(this.run);
 
   }.bind(this);
@@ -60,12 +63,17 @@ Controller.prototype.print = function () {
   this.context.clearRect(0, 0, canvas.width, canvas.height);
   this.view.drawBall(this.game.ball, this.context);
   this.view.drawPaddle(this.game.paddle, this.context);
+  for (var brick in this.game.bricks){
+      if (this.game.bricks[brick] != undefined || this.game.bricks[brick] != null){
+        this.view.drawBrick(this.game.bricks[brick], this.context)
+      }
+    }
   this.context.fill();
-};
+}
 
 Controller.prototype.moveBall = function () {
-  this.game.ball.x += this.game.ball.velocityX;
-  this.game.ball.y += this.game.ball.velocityY;
+
+
 };
 
 $(document).ready(function(){
@@ -77,9 +85,3 @@ $(document).ready(function(){
   var controller = new Controller(game, view);
   controller.paddleMove();
 });
-
-
-// var bricks = {
-//   "layer1": [new Brick(), new Brick(140), new Brick(230), new Brick(320), new Brick(410), new Brick(500), new Brick(590), new Brick(680)],
-//   "layer2":[new Brick(50, 80),new Brick(140, 80), new Brick(230, 80), new Brick(320, 80), new Brick(410, 80), new Brick(500, 80), new Brick(590, 80), new Brick(680, 80)]
-//  }
