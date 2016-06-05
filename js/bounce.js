@@ -1,22 +1,22 @@
 
 
-var ballContactsPaddle = function(ball, paddle){
-  if( ball.bottomEdge().y == paddle.topSide()){
-    if (ball.x >= paddle.surfaceRange()[0] && ball.x <= paddle.surfaceRange()[1]){
-      return true;
-    }
-  }
-}
-
-var paddleBounce = function(ball, paddle){
-    if ( ball.x.isBetween(paddle.leftEdge()[0],paddle.leftEdge()[1])){
-      sharpBounce('left', ball);
-    } else if ( ball.x.isBetween(paddle.rightEdge()[1],paddle.rightEdge()[0])){
-      sharpBounce('right', ball);
-  } else {
-    ball.reverseYVelocity()
-  }
-};
+// var ballContactsPaddle = function(ball, paddle){
+//   if( ball.bottomEdge().y == paddle.topSide()){
+//     if (ball.x >= paddle.surfaceRange()[0] && ball.x <= paddle.surfaceRange()[1]){
+//       return true;
+//     }
+//   }
+// }
+//
+// var paddleBounce = function(ball, paddle){
+//     if ( ball.x.isBetween(paddle.leftEdge()[0],paddle.leftEdge()[1])){
+//       sharpBounce('left', ball);
+//     } else if ( ball.x.isBetween(paddle.rightEdge()[1],paddle.rightEdge()[0])){
+//       sharpBounce('right', ball);
+//   } else {
+//     ball.reverseYVelocity()
+//   }
+// };
 
 var sharpBounce = function (side, ball) {
   if (side == 'left'){
