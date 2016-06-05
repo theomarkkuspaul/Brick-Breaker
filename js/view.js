@@ -1,54 +1,37 @@
 
 
 
-function View(canvas) {
-  // this.canvas = canvas,
-  // this.context = this.canvas.getContext("2d")
-  this.ball = new Ball()
-  this.move = function(){
-
-    this.canvas = canvas
-    this.context = this.canvas.getContext("2d");
-    var ctx = this.context
-
-    // debugger;
-    this.context.clearRect(0, 0, canvas.width, canvas.height);
-    this.context.fillRect(50,50,50,50);
-    this.context.fillStyle = "red"
-    this.context.fill()
-
-    this.ball.drawBall = function(){
-      this.ball.reachedBoundary();
-      this.context.beginPath();
-      this.context.arc(this.ball.x, this.ball.y, this.ball.radius, 0, Math.PI*2, true);
-      this.context.closePath();
-      this.context.fillStyle = this.ball.colour;
-    }.bind(this);
-    this.ball.drawBall();
-    this.ball.x += this.ball.velocityX;
-    this.ball.y += this.ball.velocityY;
-
-    // paddle.drawPaddle()
-    // for( var layer in bricks ){
-    //   bricks[layer].map(function(brick){
-    //     if ( brick != null || brick != undefined){
-    //       brick.drawBrick();
-    //     }
-    //   });
-    // }
-
-    var move = this.move
-    this.raf = window.requestAnimationFrame(move);
-  }.bind(this);
-  // this.move()
+function View(canvas, game) {
+  // this.game = game
+  // this.print = function(){
+  //
+  //   this.canvas = canvas
+  //   this.context = this.canvas.getContext("2d");
+  //
+  //   this.draw();
+  //
+  //   this.game.ball.x += this.game.ball.velocityX;
+  //   this.game.ball.y += this.game.ball.velocityY;
+  //   this.raf = window.requestAnimationFrame(this.print);
+  //
+  // }.bind(this);
 
 }
 
 
-  // paddle.drawPaddle = function() {
-  //   ctx.fillRect(this.x,this.y,this.width,this.height);
-  //   ctx.fillStyle = this.colour;
-  // }
+
+View.prototype.drawBall = function (ball, context) {
+  ball.reachedBoundary();
+  context.beginPath();
+  context.arc(ball.x, ball.y, ball.radius, 0, Math.PI*2, true);
+  context.closePath();
+  context.fillStyle = "red";
+};
+
+View.prototype.drawPaddle = function(paddle, context) {
+  context.fillRect(paddle.x,paddle.y,paddle.width,paddle.height);
+  context.fillStyle = "blue";
+}
   //
   // ball.drawBall = function(){
   //   ball.reachedBoundary();
@@ -84,7 +67,7 @@ function View(canvas) {
   //   debugger;
   //   var raf = window.requestAnimationFrame(move);
   //   debugger;
-  //   // game = {
+  //   // = {
   //   //   "ball": ball,
   //   //   "bricks": bricks,
   //   //   "player": player
@@ -103,50 +86,6 @@ function View(canvas) {
   //   //   }
   //   // }
   // }
-
-
-var refreshRate = 10, leftKeyDown = false, rightKeyDown = false
-
-  $(document).keydown(function(event){
-
-    if(event.which == 37){
-      leftKeyDown = true
-    };
-    if(event.which == 39){
-      rightKeyDown = true
-    };
-  });
-
-  $(document).keyup(function(event){
-
-    if(event.which == 37){
-      leftKeyDown = false
-    };
-    if(event.which == 39){
-      rightKeyDown = false
-    };
-  });
-
-  var tick = function(){
-
-    if(leftKeyDown){
-      if(paddle.leftBoundary()){
-        paddle.x -= 5;
-      } else {
-        console.log('Reached left boundary')
-      }
-    } else if(rightKeyDown){
-      if(paddle.rightBoundary()){
-        paddle.x += 5;
-      } else {
-        console.log('Reached right boundary') //if paddle has reached the edge of the game screen, allow no further movement
-      }
-    }
-
-    setTimeout(tick, refreshRate);
-  }
-
-  tick();
 
   // raf = window.requestAnimationFrame(move);
 
