@@ -62,6 +62,8 @@ function Controller(game, view){
 
 Controller.prototype.print = function () {
   this.context.clearRect(0, 0, canvas.width, canvas.height);
+  this.view.displayX(this.game.ball)
+  this.view.displayY(this.game.ball)
   this.view.drawBall(this.game.ball, this.context);
   this.view.drawPaddle(this.game.paddle, this.context);
   for (var brick in this.game.bricks){
