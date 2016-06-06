@@ -54,7 +54,6 @@ function Controller(game, view){
       this.game.endGame();
 
       this.raf = window.requestAnimationFrame(this.run);
-
   }.bind(this);
   this.run()
 }

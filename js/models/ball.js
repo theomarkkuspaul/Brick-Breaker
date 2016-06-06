@@ -1,7 +1,7 @@
 
 var Ball = function(){
-  this.x = 0,
-  this.y = 100,
+  this.x = (canvas.width/2) + 50,
+  this.y = canvas.height - 40,
   this.velocityX = 5,
   this.velocityY = 2,
   this.radius = 5 ,
@@ -19,14 +19,24 @@ Ball.prototype.move = function () {
 }
 
 Ball.prototype.reachedBoundary = function () {
-  if (this.y + this.velocityY > canvas.height || this.y + this.velocityY < 0) {
+  if (this.y + this.velocityY < 0) {
     // this.velocityY = -this.velocityY;
     return this.reverseYVelocity()
+  }
+  if (this.y + this.velocityY > canvas.height) {
+    this.missBall();
   }
   if (this.x + this.velocityX > canvas.width || this.x + this.velocityX < 0) {
     // ball.velocityX = -ball.velocityX;
     return this.reverseXVelocity()
   }
+};
+
+Ball.prototype.missBall = function () {
+    if ( this.bottomEdge().y >= canvas.height){
+      this.reverseYVelocity();
+      return true;
+    };
 };
 
 Ball.prototype.reverseXVelocity = function () {
