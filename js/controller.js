@@ -80,6 +80,8 @@ Controller.prototype.moveBall = function () {
   for ( var i = 0; i < this.game.bricks.length; i++){
     if (this.game.bricks[i] == undefined){
     } else if ( ballContactsBrick(this.game.ball, this.game.bricks[i])){
+      this.game.player.points += this.game.bricks[i].pointValue()
+      this.view.displayPoints(this.game.player.points)
       return this.game.bricks[i] = null
     }
   }
