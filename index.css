@@ -1,4 +1,16 @@
 
 #canvas{
   border: 1px solid red;
-};
+}
+
+#scoreboard {
+  border: 1px solid blue;
+}
+
+.scoreboard-container {
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+}
