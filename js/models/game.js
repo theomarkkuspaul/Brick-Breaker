@@ -12,7 +12,10 @@ function Game(ball, player, paddle) {
 
 Game.prototype.endGame = function () {
   if (this.player.lives > 0) {
-    missBall(this.ball, this.player)
+    if (this.ball.missBall()){
+      this.player.loseLife()
+      console.log( "lose life" )
+    }
   } else if (this.player.lives <= 0 ){
     gameOver()
   }
@@ -23,13 +26,6 @@ Game.prototype.endGame = function () {
 
 Game.prototype.loadNextLevel = function () {
   this.bricks = this.levels[1].bricks
-}
-
-var missBall = function(ball, player){
-  if ( ball.bottomEdge().y == canvas.height){
-    console.log("Lost Life")
-    return player.loseLife()
-  };
 }
 
 function gameOver() {
