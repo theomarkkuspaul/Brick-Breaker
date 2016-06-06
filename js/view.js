@@ -1,4 +1,4 @@
-function View(canvas, game) {
+function View() {
 
 }
 
