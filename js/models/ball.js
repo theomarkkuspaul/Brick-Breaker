@@ -24,6 +24,7 @@ Ball.prototype.reachedBoundary = function () {
     return this.reverseYVelocity()
   }
   if (this.y + this.velocityY > canvas.height) {
+    this.reverseYVelocity();
     this.missBall();
   }
   if (this.x + this.velocityX > canvas.width || this.x + this.velocityX < 0) {
@@ -34,7 +35,6 @@ Ball.prototype.reachedBoundary = function () {
 
 Ball.prototype.missBall = function () {
     if ( this.bottomEdge().y >= canvas.height){
-      this.reverseYVelocity();
       return true;
     };
 };
