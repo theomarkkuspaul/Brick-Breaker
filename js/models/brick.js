@@ -4,7 +4,16 @@ var Brick = function(x, y){
   this.y = y || 50,
   this.height = 20,
   this.width = 80,
-  this.colour = random_colour()
+  this.colour = random_colour(),
+  this.pointValue = function(){
+    if (this.colour == "red"){
+      return 5
+    } else if (this.colour == "orange") {
+      return 6
+    } else if (this.colour == "yellow"){
+      return 7
+    }
+  }
 }
 
 Brick.prototype.horizontalRange = function () {

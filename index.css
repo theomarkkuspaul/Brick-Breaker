@@ -5,6 +5,7 @@
 
 #scoreboard {
   border: 1px solid blue;
+  list-style-type: none;
 }
 
 .scoreboard-container {

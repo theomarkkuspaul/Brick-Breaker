@@ -1,5 +1,5 @@
 function View() {
-
+  this.points = $("#points")
 }
 
 View.prototype.drawBall = function (ball, context) {
@@ -19,6 +19,9 @@ View.prototype.drawBrick = function(brick, context){
    context.fillStyle = brick.colour;
  }
 
+View.prototype.displayPoints = function (pointValue) {
+  return this.points.html(pointValue)
+};
 // this prototype function on the Number class takes two parameters: lower and upper. The function checks whether the number the function was called upon is between these two ranges; returns a boolean.
 
 Number.prototype.isBetween = function(lower, upper){
