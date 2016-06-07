@@ -16,3 +16,12 @@ h2 {
   text-align: center;
   text-decoration: underline;
 }
+
+.scoreboard-item {
+  margin: auto;
+  display: block;
+}
+
+.data {
+  display: inline;
+}

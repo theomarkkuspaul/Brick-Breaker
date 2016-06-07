@@ -2,6 +2,7 @@
 <html>
   <head>
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/controller.js"></script>
     <script type="text/javascript" src="js/view.js"></script>
     <script type="text/javascript" src="js/models/ball.js"></script>
     <script type="text/javascript" src="js/models/brick.js"></script>
@@ -13,7 +14,6 @@
     <script type="text/javascript" src="js/models/levels/level_3.js"></script>
     <script type="text/javascript" src="js/bounce.js"></script>
     <script type="text/javascript" src="js/pause.js"></script>
-    <script type="text/javascript" src="js/controller.js"></script>
     <link rel="stylesheet" type="text/css" href="index.css" >
     <meta charset="utf-8">
     <title>Brick Breaker!</title>
@@ -28,17 +28,17 @@
         <ul id="scoreboard">
           <li class="scoreboard-item">
             Points:
-            <div id="points"></div>
+            <div class="data" id="points"></div>
           </li>
           <li class="scoreboard-item">
             Level:
-            <div id="level"></div>
+            <div class="data" id="level"></div>
           </li>
           <li class="scoreboard-item">
-            x: <div id="x-val"></div>
+            x: <div class="data" id="x-val"></div>
           </li>
           <li class="scoreboard-item">
-            y: <div id="y-val"></div>
+            y: <div class="data" id="y-val"></div>
           </li>
         </ul>
     </div>

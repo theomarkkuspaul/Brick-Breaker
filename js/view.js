@@ -10,6 +10,8 @@ View.prototype.drawBall = function (ball, context) {
   context.arc(ball.x, ball.y, ball.radius, 0, Math.PI*2, true);
   context.closePath();
   context.fillStyle = "red";
+  this.displayX(ball);
+  this.displayY(ball);
 };
 
 View.prototype.drawPaddle = function(paddle, context) {
