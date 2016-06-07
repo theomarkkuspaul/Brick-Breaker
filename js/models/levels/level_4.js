@@ -1,0 +1,26 @@
+var LevelFour = function(){
+  this.bricks = [
+    new Brick(200, 25),
+    new Brick(200, 50),
+    new Brick(200, 75),
+    new Brick(200, 100),
+    new Brick(200, 125),
+    new Brick(200, 150),
+    new Brick(200, 175),
+    new Brick(200, 200),
+    new Brick(540, 25),
+    new Brick(540, 50),
+    new Brick(540, 75),
+    new Brick(540, 100),
+    new Brick(540, 125),
+    new Brick(540, 150),
+    new Brick(540, 175),
+    new Brick(540, 200),
+    new Brick(285, 200),
+    new Brick(370, 200),
+    new Brick(455, 200),
+    new Brick(285, 25),
+    new Brick(370, 25),
+    new Brick(455, 25),
+  ]
+}
