@@ -62,14 +62,16 @@ function Controller(game, view){
 
 Controller.prototype.print = function () {
   this.context.clearRect(0, 0, canvas.width, canvas.height);
-  this.view.drawBall(this.game.ball, this.context);
   this.view.drawPaddle(this.game.paddle, this.context);
   for (var brick in this.game.bricks){
+      // debugger
       if (this.game.bricks[brick] != undefined || this.game.bricks[brick] != null){
         this.view.drawBrick(this.game.bricks[brick], this.context)
       }
     }
   this.context.fill();
+  this.view.drawBall(this.game.ball, this.context);
+
 }
 
 Controller.prototype.moveBall = function () {
