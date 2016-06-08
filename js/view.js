@@ -25,8 +25,12 @@ View.prototype.drawBrick = function(brick, context){
  }
 
 View.prototype.displayPoints = function (pointValue) {
-  return this.points.html(pointValue)
+  return this.points.html(pointValue);
 };
+
+View.prototype.displayLevel = function (levelNum) {
+  return this.level.html(levelNum);
+}
 
 
 
