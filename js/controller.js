@@ -64,7 +64,6 @@ Controller.prototype.print = function () {
   this.context.clearRect(0, 0, canvas.width, canvas.height);
   this.view.drawPaddle(this.game.paddle, this.context);
   for (var brick in this.game.bricks){
-      // debugger
       if (this.game.bricks[brick] != undefined || this.game.bricks[brick] != null){
         this.view.drawBrick(this.game.bricks[brick], this.context)
       }
