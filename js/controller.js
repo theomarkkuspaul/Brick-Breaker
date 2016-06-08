@@ -75,7 +75,7 @@ Controller.prototype.print = function () {
 }
 
 Controller.prototype.moveBall = function () {
-  this.view.displayLevel(this.game.currentLevel())
+  this.view.displayLevel(this.game.currentLevel()+1)
   this.game.ball.move()
   if (this.ballContactsPaddle()){
     this.paddleBounce()
@@ -85,7 +85,7 @@ Controller.prototype.moveBall = function () {
     } else if ( ballContactsBrick(this.game.ball, this.game.bricks[i])){
       this.game.player.points += this.game.bricks[i].pointValue()
       this.view.displayPoints(this.game.player.points)
-      return this.game.bricks[i] = null
+      return this.game.bricks[i] = null //calling currentLevel() will say 2 after last brick is struck
     }
   }
 };

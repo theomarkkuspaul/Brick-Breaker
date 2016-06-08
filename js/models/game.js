@@ -25,12 +25,9 @@ Game.prototype.currentLevel = function () {
       }
     }
   }
-  return completedLevels + 1;
+  return completedLevels; //should this return the object instead of in a way the user can read?
 };
 
-// Game.prototype.loadLevel = function (level) {
-//   return level.bricks
-// }
 
 Game.prototype.endGame = function () {
   if (this.player.lives > 0) {
@@ -41,13 +38,14 @@ Game.prototype.endGame = function () {
   } else if (this.player.lives <= 0 ){
     gameOver()
   }
-  if (stillBricks(this.levels[0])) {
+
+  if (stillBricks(this.levels[this.currentLevel()-1])) { //have to minus two because currentLevel adds one for UI level display and I did not account for 0 indexing.
     this.loadNextLevel()
   }
 };
 
 Game.prototype.loadNextLevel = function () {
-  this.bricks = this.levels[1].bricks
+  this.bricks = this.levels[this.currentLevel()].bricks
 }
 
 function gameOver() {
@@ -63,12 +61,15 @@ function winGame() {
 }
 
 var stillBricks = function (level) {
+  if(level == undefined){
+    return;
+  }
   var counter = 0
-  level.bricks.map(function(brick){
-    if (brick == null){
+  for (var brickIdx = 0; brickIdx < level.bricks.length; brickIdx++ ){
+    if (level.bricks[brickIdx] == null){
       counter += 1;
     };
-  });
+  };
   if (counter == level.bricks.length){
     return true
   }
