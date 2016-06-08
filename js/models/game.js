@@ -2,7 +2,12 @@ function Game(ball, player, paddle) {
   this.player = player,
   this.ball = ball,
   this.paddle = paddle,
-  this.levels = [new LevelOne(), new LevelTwo(), new LevelThree(), new LevelFour()]
+  this.levels = [
+    new LevelOne(),
+    new LevelTwo(),
+    new LevelThree(),
+    new LevelFour()
+  ]
   this.bricks = this.levels[0].bricks // loads first level
 }
 
